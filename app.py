@@ -40,7 +40,7 @@ def homepage():
 
             session['logged_in'] = True
             session['gid'] = gid
-            session['level'] = '0'
+            session['level'] = '-1'
             flash('Login successful', 'success')
             return redirect(url_for('l1'))
         else:
