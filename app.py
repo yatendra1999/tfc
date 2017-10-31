@@ -42,7 +42,7 @@ def homepage():
             session['gid'] = gid
             session['level'] = '-1'
             flash('Login successful', 'success')
-            return redirect(url_for('l1'))
+            return redirect(url_for('l2'))
         else:
             flash('Wrong username/password', 'danger')
 
@@ -57,22 +57,21 @@ def l1():
 
 @app.route('/level2', methods=['GET', 'POST'])
 def l2():
-    return render_template('level2.html')
-
-@app.route('/pass',methods=['GET','POST'])
-def password():
     if session['level'] >= '0':
         if request.method == 'POST':
             if request.form['password']=='9152':
                 session['level'] = '1'
-                return redirect(url_for('l2'))
+                return render_template('level2.html')
             else:
                 flash('wrong password','danger')
                 return redirect(url_for('l1'))
         else:
             return render_template('password_page.html')
     else:
-        return redirect(url_for(request.referrer))
+        return redirect(request.referrer)
+    return render_template('level2.html')
+
+
 
 
 if __name__ == '__main__':
