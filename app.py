@@ -60,7 +60,7 @@ def l2():
     return render_template('level2.html')
 
 @app.route('/pass',methods=['GET','POST'])
-def l2():
+def password():
     if session['level'] >= '0':
         if request.method == 'POST':
             if request.form['password']=='9152':
