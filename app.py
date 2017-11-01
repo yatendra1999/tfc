@@ -58,10 +58,10 @@ def l1():
             green = request.form['green']
             blue = request.form['blue']
             yellow = request.form['yellow']
-            if yellow == '':
-                if blue == '':
-                    if green == '':
-                        if red == '':
+            if yellow == '0':
+                if blue == '3':
+                    if green == '3':
+                        if red == '3':
                             session['level'] = '1'
                             return render_template(url_for('l2'))
                         else:
