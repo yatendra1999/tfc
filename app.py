@@ -62,6 +62,7 @@ def l1():
                 if blue == '':
                     if green == '':
                         if red == '':
+                            session['level'] = '1'
                             return render_template(url_for('l2'))
                         else:
                             flash('WRONG INPUT ','danger')
@@ -85,7 +86,7 @@ def l1():
 @app.route('/level2', methods=['GET', 'POST'])
 def l2():
     if 'logged_in' in session:
-        if session['level'] >= '0':
+        if session['level'] >= '1':
              if request.form['password'] == '':
                 session['level'] = '1'
                 return render_template('level2.html')
