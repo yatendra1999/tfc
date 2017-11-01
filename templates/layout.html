@@ -16,6 +16,11 @@
 
 <div class="container">
 <footer>
+         {% if session.logged_in %}
+                <p align="center"><a href="/logout">Logout</a> </p>
+                <p align="left"><a>{{session.username}}</a></p>
+                {% else %}
+                {% endif %}
         <p align="right">IIT Bhilai</p>
 </footer>
 </div>

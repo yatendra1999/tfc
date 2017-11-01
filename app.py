@@ -95,7 +95,11 @@ def l3():
         return redirect(url_for('homepage'))
 
 
-
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You have been successfully logged out', 'success')
+    return redirect(url_for('homepage'))
 
 
 if __name__ == '__main__':
