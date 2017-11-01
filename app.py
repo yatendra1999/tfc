@@ -50,14 +50,8 @@ def homepage():
 
     return render_template('homepage.html')
 
-
-@app.route('/you_are_looking_for_nums', methods=['GET', 'POST'])
-def l3():
-    if 'logged_in' in session:
-        return render_template('level1.html')
-    else:
-        flash('User must login first', 'danger')
-        return redirect(url_for('homepage'))
+@app.route('level1',methods=['GET','POST'])
+def l1():
 
 
 @app.route('/level2', methods=['GET', 'POST'])
@@ -65,12 +59,31 @@ def l2():
     if 'logged_in' in session:
         if session['level'] >= '0':
             if request.method == 'POST':
-                if request.form['password'] == '9152':
+                if request.form['password'] == '':
                     session['level'] = '1'
                     return render_template('level2.html')
                 else:
                     flash('wrong password', 'danger')
                     return redirect(url_for('l1'))
+            else:
+                return render_template('password_page.html')
+        else:
+            return redirect(request.referrer)
+    else:
+        flash('User must login first', 'danger')
+        return redirect(url_for('homepage'))
+
+@app.route('/you_are_looking_for_nums', methods=['GET', 'POST'])
+def l3():
+    if 'logged_in' in session:
+        if session['level'] >= '1':
+            if request.method == 'POST':
+                if request.form['password'] == '':
+                    session['level'] = '2'
+                    return render_template('level3.html')
+                else:
+                    flash('wrong password', 'danger')
+                    return redirect(url_for('l2'))
             else:
                 return render_template('password_page.html')
         else:
