@@ -52,7 +52,7 @@ def homepage():
 
 
 @app.route('/you_are_looking_for_nums', methods=['GET', 'POST'])
-def l1():
+def l3():
     if 'logged_in' in session:
         return render_template('level1.html')
     else:
