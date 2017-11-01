@@ -50,8 +50,13 @@ def homepage():
 
     return render_template('homepage.html')
 
-@app.route('level1',methods=['GET','POST'])
+@app.route('/level1',methods=['GET','POST'])
 def l1():
+    if 'logged_in' in session:
+        return render_template('level1.html')
+    else:
+        flash('User must login first', 'danger')
+        return redirect(url_for('homepage'))
 
 
 @app.route('/level2', methods=['GET', 'POST'])
