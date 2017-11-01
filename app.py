@@ -88,7 +88,7 @@ def l2():
     if 'logged_in' in session:
         if session['level'] >= '1':
              if request.form['password'] == '':
-                session['level'] = '1'
+                session['level'] = '2'
                 return render_template('level2.html')
              else:
                 flash('wrong password', 'danger')
