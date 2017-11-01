@@ -63,15 +63,12 @@ def l1():
 def l2():
     if 'logged_in' in session:
         if session['level'] >= '0':
-            if request.method == 'POST':
-                if request.form['password'] == '':
-                    session['level'] = '1'
-                    return render_template('level2.html')
-                else:
-                    flash('wrong password', 'danger')
-                    return redirect(url_for('l1'))
-            else:
-                return render_template('password_page.html')
+             if request.form['password'] == '':
+                session['level'] = '1'
+                return render_template('level2.html')
+             else:
+                flash('wrong password', 'danger')
+                return redirect(url_for('l1'))
         else:
             return redirect(request.referrer)
     else:
