@@ -77,7 +77,7 @@ def l1():
                 flash('WRONG INPUT ', 'danger')
                 return render_template('level1.html')
         else:
-            return render_template('level1.html')
+            return render_template('new_level_1.html')
     else:
         flash('User must login first', 'danger')
         return redirect(url_for('homepage'))
