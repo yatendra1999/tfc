@@ -53,7 +53,30 @@ def homepage():
 @app.route('/level1',methods=['GET','POST'])
 def l1():
     if 'logged_in' in session:
-        return render_template('level1.html')
+        if request.method == 'POST':
+            red = request.form['red']
+            green = request.form['green']
+            blue = request.form['blue']
+            yellow = request.form['yellow']
+            if yellow == '':
+                if blue == '':
+                    if green == '':
+                        if red == '':
+                            return render_template(url_for('l2'))
+                        else:
+                            flash('WRONG INPUT ','danger')
+                            return render_template('level1.html')
+                    else:
+                        flash('WRONG INPUT ', 'danger')
+                        return render_template('level1.html')
+                else:
+                    flash('WRONG INPUT ', 'danger')
+                    return render_template('level1.html')
+            else:
+                flash('WRONG INPUT ', 'danger')
+                return render_template('level1.html')
+        else:
+            return render_template('level1.html')
     else:
         flash('User must login first', 'danger')
         return redirect(url_for('homepage'))
