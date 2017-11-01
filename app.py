@@ -45,7 +45,7 @@ def homepage():
             return redirect(url_for('l1'))
         else:
             flash('Wrong username/password', 'danger')
-
+            return redirect(url_for('homepage'))
         cur.close()
 
     return render_template('homepage.html')
