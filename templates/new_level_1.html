@@ -1,0 +1,27 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="jumbotron" align="center" style="background-image: url(file:///home/akhiil/tfc-akhil/tfc/static/tennisball_zps93bb0163.jpg);
+background-size:auto 100%; background-repeat:no-repeat; height:100vh; background-position:center">
+<div class="container">
+<h2 align="center">Enter</h2>
+{% include 'includes/_messages.html' %}
+<form action="" method="post">
+    <div class="form-group" align="center">
+        <input style="width: 50px; background-color:#FF0000	;" type="text" name="first" placeholder="1" class="form-control" value={{request.form.red}}>
+        <br>
+        <input style="width: 50px; background-color:#008000;" type="text" name="second" placeholder="2" class="form-control" value={{request.form.green}}>
+        <br>
+        <input style="width: 50px; background-color:#0000FF;" type="text" name="third" placeholder="3" class="form-control" value={{request.form.blue}}>
+        <br>
+        <input style="width: 50px; background-color:#FFFF00;" type="text" name="fourth" placeholder="4" class="form-control" value={{request.form.yellow}}>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% endblock %}
