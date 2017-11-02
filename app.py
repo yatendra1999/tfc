@@ -55,30 +55,32 @@ def homepage():
 def l1():
     if 'logged_in' in session:
         if request.method == 'POST':
-            red = request.form['red']
-            green = request.form['green']
-            blue = request.form['blue']
-            yellow = request.form['yellow']
-            if yellow == '0':
-                if blue == '3':
-                    if green == '3':
-                        if red == '3':
+            print("running loop")
+            red = int(request.form['red'])
+            green = int(request.form['green'])
+            blue = int(request.form['blue'])
+            yellow = int(request.form['yellow'])
+            if yellow == 0:
+                if blue == 3:
+                    if green == 3:
+                        if red == 3:
                             session['level'] = '1'
                             return redirect(url_for('l2'))
                         else:
-                            flash('WRONG INPUT ', 'danger')
-                            return render_template('new_level1.html')
+                            flash('WRONG ANSWER ', 'danger')
+                            return render_template('level1.html')
                     else:
                         flash('WRONG INPUT ', 'danger')
-                        return render_template('new_level1.html')
+                        return render_template('level1.html')
                 else:
                     flash('WRONG INPUT ', 'danger')
-                    return render_template('new_level1.html')
+                    return render_template('level1.html')
             else:
+                print("Wrong4")
                 flash('WRONG INPUT ', 'danger')
-                return render_template('new_level1.html')
+                return render_template('level1.html')
         else:
-            return render_template('new_level_1.html')
+            return render_template('level1.html')
     else:
         flash('User must login first', 'danger')
         return redirect(url_for('homepage'))
@@ -88,12 +90,15 @@ def l1():
 def l2():
     if 'logged_in' in session:
         if session['level'] >= '1':
-            if request.form['password'] == '':
-                session['level'] = '2'
-                return render_template('level2.html')
+            if request.method == 'POST':
+                if request.form['password'] == '':
+                    session['level'] = '2'
+                    return render_template('level2.html')
+                else:
+                    flash('wrong password', 'danger')
+                    return redirect(url_for('l1'))
             else:
-                flash('wrong password', 'danger')
-                return redirect(url_for('l1'))
+                return render_template('level2.html')
         else:
             return redirect(request.referrer)
     else:

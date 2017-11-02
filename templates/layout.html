@@ -17,11 +17,11 @@
 <div class="container">
 <footer>
          {% if session.logged_in %}
-                <p align="center"><a href="/logout">Logout</a> </p>
-                <p align="left"><a>{{session.username}}</a></p>
+                <div style="float: left">{{session.gid}}</div>
+                <div style="margin: 0 auto; width: 100px;"><a href="/logout">Logout</a></div>
                 {% else %}
                 {% endif %}
-        <p align="right">IIT Bhilai</p>
+        <div style="float: right">IIT Bhilai</div>
 </footer>
 </div>
 
