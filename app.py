@@ -50,7 +50,8 @@ def homepage():
 
     return render_template('homepage.html')
 
-@app.route('/level1',methods=['GET','POST'])
+
+@app.route('/level1',methods=['GET', 'POST'])
 def l1():
     if 'logged_in' in session:
         if request.method == 'POST':
@@ -63,19 +64,19 @@ def l1():
                     if green == '3':
                         if red == '3':
                             session['level'] = '1'
-                            return render_template(url_for('l2'))
+                            return redirect(url_for('l2'))
                         else:
-                            flash('WRONG INPUT ','danger')
-                            return render_template('level1.html')
+                            flash('WRONG INPUT ', 'danger')
+                            return render_template('new_level1.html')
                     else:
                         flash('WRONG INPUT ', 'danger')
-                        return render_template('level1.html')
+                        return render_template('new_level1.html')
                 else:
                     flash('WRONG INPUT ', 'danger')
-                    return render_template('level1.html')
+                    return render_template('new_level1.html')
             else:
                 flash('WRONG INPUT ', 'danger')
-                return render_template('level1.html')
+                return render_template('new_level1.html')
         else:
             return render_template('new_level_1.html')
     else:
@@ -87,10 +88,10 @@ def l1():
 def l2():
     if 'logged_in' in session:
         if session['level'] >= '1':
-             if request.form['password'] == '':
+            if request.form['password'] == '':
                 session['level'] = '2'
                 return render_template('level2.html')
-             else:
+            else:
                 flash('wrong password', 'danger')
                 return redirect(url_for('l1'))
         else:
@@ -98,6 +99,7 @@ def l2():
     else:
         flash('User must login first', 'danger')
         return redirect(url_for('homepage'))
+
 
 @app.route('/you_are_looking_for_nums', methods=['GET', 'POST'])
 def l3():

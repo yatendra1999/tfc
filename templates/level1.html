@@ -1,0 +1,22 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+<div class="jumbotron" align="center" style="background-image: url({{url_for('static', filename='Colourful-objects-colours-22233280-500-400.jpg')}});
+background-size:auto 100%; background-repeat:no-repeat; height:100vh; background-position:center">
+<div class="container">
+<h2 align="center" style="color:white; text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; ">Enter</h2>
+<form action="" method="POST">
+    <div class="form-group" align="center">
+        <input style="width: 50px; background-color:#FF0000	;" type="text" name="red" placeholder="1" class="form-control" value={{request.form.red}}>
+        <br>
+        <input style="width: 50px; background-color:#008000;" type="text" name="green" placeholder="2" class="form-control" value={{request.form.green}}>
+        <br>
+        <input style="width: 50px; background-color:#0000FF;" type="text" name="blue" placeholder="3" class="form-control" value={{request.form.blue}}>
+        <br>
+        <input style="width: 50px; background-color:#FFFF00;" type="text" name="yellow" placeholder="4" class="form-control" value={{request.form.yellow}}>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+{% endblock %}
