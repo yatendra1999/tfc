@@ -161,6 +161,7 @@ def logg5():
         if session['level'] >= '3':
             if request.method == 'POST':
                 if request.form['password'] == '':
+                    session['level'] = '4'
                     return redirect(url_for('l5'))
                 else:
                     flash('wrong password', 'danger')
@@ -178,7 +179,11 @@ def l5():
     if 'logged_in' in session:
         if session['level'] >= '4':
             session['level'] = '5'
-            return re
+            return render_template('level5.html')
+        else:
+            return redirect(url_for('homepage'))
+    else:
+        return redirect(url_for('homepage'))
 
 
 

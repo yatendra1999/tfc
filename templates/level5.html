@@ -1,12 +1,17 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html'%}
 
 {% block body %}
-
-<div class="jumbotron">
-    <div class="container">
-        <img src={{url_for('static', filename='final.png')}}>
-        </img>
+<div class="jumbotron" align="center">
+<div class="container">
+<h1 align="center">Level 5</h1>
+<br>
+<img src="final.png" style="width: 80vh;" alt="Hint">
+<form action="" method="POST">
+    <div class="form-group" align="center">
+        <input style="width: 200px;" type="text" name="red" placeholder="Enter Here" class="form-control" value={{request.form.red}}>
     </div>
+    <button type="submit" class="btn btn-primary btn-lg">   Submit   </button>
+</form>
 </div>
-
+</div>
 {% endblock %}
