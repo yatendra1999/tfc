@@ -160,7 +160,7 @@ def logg5():
     if 'logged_in' in session:
         if session['level'] >= '3':
             if request.method == 'POST':
-                if request.form['password'] == '':
+                if request.form['password'] == '12':
                     session['level'] = '4'
                     return redirect(url_for('l5'))
                 else:
