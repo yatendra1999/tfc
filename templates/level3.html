@@ -6,7 +6,12 @@
 <div class="jumbotron" align="center">
     <p align="center">OWTTHINKEVIFOUTENOOFENINBOX</p>
     <div class="container">
-    <button type="submit" class="btn btn-primary"><a href="/level2" style="color: white;">Next level</a></button>
+        <form action="" method="post">
+    <div class="form-group" align="center">
+        <input style="width: 300px" type="password" name="password" placeholder="Password" class="form-control" value={{request.form.password}}>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </div>
 </div>
 
