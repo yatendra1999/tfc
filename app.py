@@ -159,11 +159,23 @@ def l4():
 def logg5():
     if 'logged_in' in session:
         if session['level'] >= '3':
+            return render_template('r5.html')
+        else:
+            return redirect(url_for('logout'))
+    else:
+        flash('User must login first', 'danger')
+        return redirect(url_for('homepage'))
+
+
+@app.route('/route_6',methods=['GET','POST'])
+def logg6():
+    if 'logged_in' in session:
+        if session['level'] >= '3':
             if request.method == 'POST':
                 if request.form['password'] == '':
                     return redirect(url_for('l5'))
                 else:
-                    flash('wrong password','danger')
+                    flash('wrong password', 'danger')
                     return render_template('password_page.html')
             else:
                 return render_template('password_page.html')
@@ -172,7 +184,6 @@ def logg5():
     else:
         flash('User must login first', 'danger')
         return redirect(url_for('homepage'))
-
 
 @app.route('/turtle', methods=['GET', 'POST'])
 def l5():
