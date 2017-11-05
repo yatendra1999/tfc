@@ -165,7 +165,7 @@ def logg5():
                     return redirect(url_for('l5'))
                 else:
                     flash('wrong password', 'danger')
-                    return render_template('password_page.html')
+                    return render_template('r5.html')
             else:
                 return render_template('r5.html')
         else:
